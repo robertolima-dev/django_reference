@@ -40,13 +40,13 @@ export STUDENT_ENV='local'
 </p>
 
 <p>
-8. Update pip: </br>
+8. Upgrade pip: </br>
 <code>pip install --upgrade pip</code>
 </p>
 
 <p>
 9. Requirements ou install-req: </br>
-<code>pip install -r requirements.txt</code>
+<code>pip install -r requirements.txt</code></br>
 ou se tiver o arquivo install-req</br>
 <code>pip install -r install-req.txt</code>
 </p>
