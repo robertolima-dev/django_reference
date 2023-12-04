@@ -3,7 +3,6 @@ from django.db.models import Avg
 from rest_framework import serializers
 
 from apps.article.api.category.serializers import CategorySerializer
-# from apps.article.api.evaluation.serializers import EvaluationSerializer
 from apps.article.api.module.serializers import ModuleSerializer
 from apps.article.models import Article, Category, Module
 
@@ -21,9 +20,6 @@ class CurrentUserSerializer(serializers.ModelSerializer):
 
 class ArticleSerializer(serializers.ModelSerializer):
 
-    # evaluations = EvaluationSerializer(many=True, read_only=True)
-    # evaluations = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='evaluation-detail')
-
     class Meta:
         model = Article
         fields = (
@@ -36,7 +32,6 @@ class ArticleSerializer(serializers.ModelSerializer):
             'module',
             'category',
             'author',
-            # 'evaluations',
             'created_at',
             'updated_at',
             'active',
