@@ -9,7 +9,7 @@ from apps.article.api.module.serializers import ModuleSerializer
 
 class ArticleCustomSerializer(serializers.Serializer):
 
-    id = serializers.IntegerField()
+    id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=254)
     image = serializers.CharField(max_length=254)
     slug = serializers.CharField(max_length=254)
@@ -22,3 +22,4 @@ class ArticleCustomSerializer(serializers.Serializer):
     updated_at = serializers.DateTimeField()
     created_at = serializers.DateTimeField()
     active = serializers.BooleanField(default=False)
+
