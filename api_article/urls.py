@@ -19,7 +19,8 @@ from django.urls import include, path
 from rest_framework import routers
 
 from apps.article.api.article.viewsets import ArticleViewSet
-from apps.article.api.article_custom.viewsets import ArticleCustomViewSet
+from apps.article.api.article_custom.viewsets import (ArticleCustomViewSet,
+                                                      ArticlesCustomViewSet)
 from apps.article.api.category.viewsets import CategoryViewSet
 from apps.article.api.evaluation.viewsets import EvaluationViewSet
 from apps.article.api.module.viewsets import ModuleViewSet
@@ -32,7 +33,8 @@ route_api_v1.register(r'evaluations', EvaluationViewSet, basename='evaluations')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('api/v1/custom/', ArticleCustomViewSet.as_view(), name='custom'),
+    path('api/v1/custom/', ArticlesCustomViewSet.as_view(), name='custom'),
+    path('api/v1/custom/<int:article_id>/', ArticleCustomViewSet.as_view(), name='custom'),
 ]
 
 urlpatterns.append(
