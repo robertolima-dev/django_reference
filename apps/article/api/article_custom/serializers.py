@@ -2,9 +2,7 @@ from django.conf import settings
 from rest_framework import serializers
 
 from apps.article.api.article.serializers import CurrentUserSerializer
-from apps.article.api.category.serializers import CategorySerializer
 from apps.article.api.evaluation.serializers import EvaluationObjSerializer
-from apps.article.api.module.serializers import ModuleSerializer
 
 
 class ArticleCustomSerializer(serializers.Serializer):
@@ -15,11 +13,12 @@ class ArticleCustomSerializer(serializers.Serializer):
     slug = serializers.CharField(max_length=254)
     text = serializers.CharField(max_length=5000)
     published = serializers.BooleanField(default=False)
-    module = ModuleSerializer(many=False)
-    category = CategorySerializer(many=False)
-    author = CurrentUserSerializer(many=False)
-    evaluations = EvaluationObjSerializer(many=True)
-    updated_at = serializers.DateTimeField()
-    created_at = serializers.DateTimeField()
-    active = serializers.BooleanField(default=False)
+    author = CurrentUserSerializer(many=False, read_only=True)
+    evaluations = EvaluationObjSerializer(many=True, read_only=True)
+    updated_at = serializers.DateTimeField(read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
+    active = serializers.BooleanField(default=True)
+
+    category_name = serializers.CharField(source='category.name', read_only=True)
+    module_name = serializers.CharField(source='module.module', read_only=True)
 
